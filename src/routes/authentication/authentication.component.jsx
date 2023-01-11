@@ -5,7 +5,6 @@ import './authentication.styles.scss';
 export default function Authentication() {
   return (
     <div className='authentication-container'>
-      {/* <h1>Sign In Page</h1> */}
       <SignInForm />
       <SignUpForm />
     </div>
