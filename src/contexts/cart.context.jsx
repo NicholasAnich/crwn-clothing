@@ -15,36 +15,82 @@ export const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
+export const removeCartItem = (cartItems, cartItemToRemove) => {
+  const existingCartItem = cartItems.find(
+    (cartItem) => cartItem.id === cartItemToRemove.id
+  );
+
+  if (existingCartItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== cartItemToRemove.id);
+  }
+
+  if (existingCartItem) {
+    return cartItems.map((cartItem) =>
+      cartItem.id === cartItemToRemove.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+  }
+};
+
+export const clearCartItem = (cartItems, cartItemToClear) => {
+  return cartItems.filter((cartItem) => cartItem.id !== cartItemToClear.id);
+};
+
 export const CartContext = createContext({
   isCartOpen: false,
   setIsCartOpen: () => {},
   cartItems: [],
   addItemToCart: () => {},
+  removeItemFromCart: () => {},
+  clearItemFromCart: () => {},
   cartCount: 0,
+  cartTotal: 0,
 });
 
 export function CartProvider({ children }) {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartCount, setCartCount] = useState(0);
+  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     const newCartCount = cartItems.reduce((total, cartItem) => {
       return total + cartItem.quantity;
     }, 0);
+
     setCartCount(newCartCount);
+  }, [cartItems]);
+
+  useEffect(() => {
+    const newCartTotal = cartItems.reduce((acc, cur) => {
+      return acc + cur.price * cur.quantity;
+    }, 0);
+
+    setCartTotal(newCartTotal);
   }, [cartItems]);
 
   function addItemToCart(productToAdd) {
     setCartItems(addCartItem(cartItems, productToAdd));
   }
 
+  function removeItemFromCart(cartItemToRemove) {
+    setCartItems(removeCartItem(cartItems, cartItemToRemove));
+  }
+
+  function clearItemFromCart(cartItemToClear) {
+    setCartItems(clearCartItem(cartItems, cartItemToClear));
+  }
+
   const value = {
     isCartOpen,
     setIsCartOpen,
     addItemToCart,
+    removeItemFromCart,
+    clearItemFromCart,
     cartItems,
     cartCount,
+    cartTotal,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
