@@ -13,7 +13,7 @@ export default function CartIcon() {
   return (
     <CartIconContainer onClick={toggleIsCartOpen}>
       <ShoppingIcon className='shopping-icon' />
-      <ItemCount className='item-count'>{cartCount}</ItemCount>
+      <ItemCount>{cartCount}</ItemCount>
     </CartIconContainer>
   );
 }

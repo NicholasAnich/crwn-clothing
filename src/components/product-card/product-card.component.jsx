@@ -4,7 +4,6 @@ import { CartContext } from '../../contexts/cart.context';
 import Button from '../button/button.component';
 import {
   ProductCardContainer,
-  CardImage,
   Footer,
   FooterName,
   Price,
@@ -20,7 +19,7 @@ export default function ProductCard({ product }) {
 
   return (
     <ProductCardContainer>
-      <CardImage src={imageUrl} alt={`${name}`} />
+      <img src={imageUrl} alt={`${name}`} />
       <Footer>
         <FooterName>{name}</FooterName>
         <Price>{price}</Price>

@@ -3,12 +3,11 @@ import { CartContext } from '../../contexts/cart.context';
 import {
   CheckoutItemContainer,
   ImageContainer,
-  Quanitity,
-  Name,
-  Price,
+  Quantity,
   Arrow,
   Value,
   RemoveButton,
+  BaseSpan,
 } from './checkout-item.styles';
 
 export default function CheckoutItem({ cartItem }) {
@@ -32,13 +31,13 @@ export default function CheckoutItem({ cartItem }) {
       <ImageContainer>
         <img src={imageUrl} alt={`${name}`} />
       </ImageContainer>
-      <Name>{name}</Name>
-      <Quanitity>
+      <BaseSpan>{name}</BaseSpan>
+      <Quantity>
         <Arrow onClick={removeItemHandler}>&#10094;</Arrow>
         <Value>{quantity}</Value>
         <Arrow onClick={addItemHandler}>&#10095;</Arrow>
-      </Quanitity>
-      <Price>{price}</Price>
+      </Quantity>
+      <BaseSpan>{price}</BaseSpan>
       <RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
     </CheckoutItemContainer>
   );

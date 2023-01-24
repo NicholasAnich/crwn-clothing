@@ -57,7 +57,7 @@ export default function SignUpForm() {
   return (
     <>
       <SignUpContainer>
-        <SignUpTitle>Don't have an account?</SignUpTitle>
+        <h2>Don't have an account?</h2>
         <span>Sign up with your email and password</span>
         <form onSubmit={handleSubmit}>
           <FormInput
@@ -92,7 +92,7 @@ export default function SignUpForm() {
             onChange={handleChange}
             required
           />
-          <Button buttonType='default' type='submit'>
+          <Button buttonType='base' type='submit'>
             Submit
           </Button>
           {error && <p>{error}</p>}

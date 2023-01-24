@@ -1,17 +1,17 @@
 import ProductCard from '../product-card/product-card.component';
 import {
   Preview,
-  PreviewContainer,
-  PreviewTitle,
+  CategoryPreviewContainer,
+  Title,
 } from './category-preview.styles.jsx';
 
 import React from 'react';
 
 export default function CategoryPreview({ title, products }) {
   return (
-    <PreviewContainer>
+    <CategoryPreviewContainer>
       <h2>
-        <PreviewTitle to={title}>{title.toUpperCase()}</PreviewTitle>
+        <Title to={title}>{title.toUpperCase()}</Title>
       </h2>
       <Preview>
         {products
@@ -20,6 +20,6 @@ export default function CategoryPreview({ title, products }) {
             <ProductCard key={product.id} product={product} />
           ))}
       </Preview>
-    </PreviewContainer>
+    </CategoryPreviewContainer>
   );
 }
