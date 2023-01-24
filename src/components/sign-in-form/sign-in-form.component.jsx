@@ -9,7 +9,11 @@ import {
 import FormInput from '../form-input/form-input.component';
 
 import Button from '../button/button.component';
-import './sign-in-form.styles.scss';
+import {
+  SignInButton,
+  SignInContainer,
+  SignInTitle,
+} from './sign-in-form.styles';
 
 const defaultFormFields = {
   email: '',
@@ -57,8 +61,8 @@ export default function SignInForm() {
   };
 
   return (
-    <div className='sign-in-container'>
-      <h2>I already have an account</h2>
+    <SignInContainer>
+      <SignInTitle>I already have an account</SignInTitle>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -84,6 +88,6 @@ export default function SignInForm() {
           </Button>
         </div>
       </form>
-    </div>
+    </SignInContainer>
   );
 }
