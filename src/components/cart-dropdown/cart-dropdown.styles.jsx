@@ -8,7 +8,7 @@ import {
 
 export const CartDropdownContainer = styled.div`
   position: absolute;
-  width: 240px;
+  min-width: 240px;
   height: 340px;
   display: flex;
   flex-direction: column;
@@ -34,5 +34,6 @@ export const CartItems = styled.div`
   height: 240px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow: auto;
+  width: 100%;
 `;

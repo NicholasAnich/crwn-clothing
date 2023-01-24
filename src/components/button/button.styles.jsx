@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const BaseButton = styled.button`
   min-width: 165px;
   width: auto;
-  height: 50px;
+  // min-height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 35px 0 35px;
-  font-size: 15px;
+  padding: 0 2.1875em 0 2.1875em;
+  font-size: clamp(0.75rem, 1vw, 2rem);
   background-color: black;
   color: white;
   text-transform: uppercase;
