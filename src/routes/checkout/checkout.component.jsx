@@ -35,7 +35,7 @@ export default function Checkout() {
         </HeaderBlock>
       </Header>
       {displayItems}
-      <Total>Total: {cartTotal}</Total>
+      <Total>Total: ${cartTotal}</Total>
     </CheckoutContainer>
   );
 }
